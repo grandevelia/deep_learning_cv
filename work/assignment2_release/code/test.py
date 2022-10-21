@@ -1,3 +1,4 @@
+#In[]
 import numpy as np
 import torch
 import torch.nn as nn
@@ -10,35 +11,8 @@ import math
 from utils import resize_image
 import custom_transforms as transforms
 from custom_blocks import PatchEmbed, TransformerBlock, trunc_normal_
+from student_code import custom_conv2d, CustomConv2d
 
-
-#################################################################################
-# You will need to fill in the missing code in this file
-#################################################################################
-
-
-#################################################################################
-# Part I: Understanding Convolutions
-#################################################################################
-class CustomConv2DFunction(Function):
-    @staticmethod
-    def forward(ctx, input_feats, weight, bias, stride=1, padding=0):
-        """
-        Forward propagation of convolution operation.
-        We only consider square filters with equal stride/padding in width and height!
-
-        Args:
-          input_feats: input feature map of size N * C_i * H * W
-          weight: filter weight of size C_o * C_i * K * K
-          bias: (optional) filter bias of size C_o
-          stride: (int, optional) stride for the convolution. Default: 1
-          padding: (int, optional) Zero-padding added to both sides of the input. Default: 0
-
-        Outputs:
-          output: responses of the convolution  w*x+b
-
-        """
-        # sanity check
 
 #In[1]
 out_size = 5
@@ -52,15 +26,55 @@ bias = torch.tensor(np.random.random(size=[out_size]))
 input_feats = torch.tensor(np.random.random(size=[bs, n_filters, h, w]))
 stride = 1
 padding = 1
+#In[]
+num_imgs = 2
+in_channels = 3
+out_channels = 64
+kernel_size = 7
+stride = 2
+padding = 3
+input_height = 12
+input_width = 12
+atol = 1e-05
+
+# let us see what we have
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print("Using device: " + str(device))
+
+# set up the variables
+# double precision is needed for numerical gradients!
+# this will also turn off the cudnn backend (remove randomness)
+input_feats = torch.randn(
+    num_imgs, in_channels, input_height, input_width, requires_grad=True, device=device
+).double()
+weight = torch.randn(
+    out_channels,
+    in_channels,
+    kernel_size,
+    kernel_size,
+    requires_grad=True,
+    device=device,
+).double()
+bias = torch.randn(out_channels, requires_grad=True, device=device).double()
+
+# forward
+print("Check Fprop ...")
+ref_conv2d = torch.nn.functional.conv2d
+ref_output = ref_conv2d(input_feats, weight, bias, stride, padding)
+custom_output = custom_conv2d(input_feats, weight, bias, stride, padding)
+
+
+
+
 #In[1]
 
 weight_blocks = unfold(weight, stride=kernel_size, kernel_size=kernel_size).squeeze(-1).unsqueeze(0)
 input_blocks = unfold(input_feats, stride=stride, padding=padding, kernel_size=kernel_size)
 
-nc = input_feats.size(0)
-ni = input_feats.size(1)
 output_height = int(((input_feats.size(2) + 2 * padding - weight.size(2))/stride) + 1)
 output_width = int(((input_feats.size(3) + 2 * padding - weight.size(2))/stride) + 1)
+
+
 output_size = (output_height, output_width)
 output = fold(weight_blocks@input_blocks, kernel_size=1, 
                 output_size=output_size, stride=1) + bias[None, :, None, None]

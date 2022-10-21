@@ -59,17 +59,19 @@ class CustomConv2DFunction(Function):
         # Fill in the code here
         #################################################################################
         ctx.n_filters = weight.size(1)
-        ctx.out_size = weight.shape(0)
+        ctx.out_size = weight.size(0)
         ctx.bs = input_feats.size(0)
+        ctx.kernel_size = kernel_size
 
         weight_blocks = unfold(weight, stride=kernel_size, kernel_size=kernel_size).squeeze(-1).unsqueeze(0)
         input_blocks = unfold(input_feats, stride=stride, padding=padding, kernel_size=kernel_size)
 
         output_height = int(((ctx.input_height + 2 * padding - weight.size(2))/stride) + 1)
         output_width = int(((ctx.input_width + 2 * padding - weight.size(2))/stride) + 1)
+
         output_size = (output_height, output_width)
         output = fold(weight_blocks@input_blocks, kernel_size=1, 
-                        output_size=output_size, stride=stride) + bias[None, :, None, None]
+                        output_size=output_size, stride=1) + bias[None, :, None, None]
 
         # save for backward (you need to save the unfolded tensor into ctx)
         ctx.save_for_backward(weight_blocks, input_blocks, bias)
@@ -97,7 +99,7 @@ class CustomConv2DFunction(Function):
         # recover the conv params
         kernel_size = ctx.kernel_size
         out_size = ctx.out_size
-        bs = ctc.bs
+        bs = ctx.bs
         n_filters = ctx.n_filters
         input_height = ctx.input_height
         input_width = ctx.input_width
