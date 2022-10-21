@@ -1,0 +1,1074 @@
+{
+  "version": "0.3.2",
+  "createTimestamp": 1663689476532,
+  "modifyTimestamp": 1663689476532,
+  "uri": "file:/Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/project.qpproj",
+  "lastID": 16,
+  "images": [
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/HPan-Ade170Sur-01-115-002.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HPan-Ade170Sur-01-115-002.svs",
+          "width": 120600,
+          "height": 88691,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 120600,
+              "height": 88691
+            },
+            {
+              "downsample": 4.0,
+              "width": 30150,
+              "height": 22172
+            },
+            {
+              "downsample": 16.0,
+              "width": 7537,
+              "height": 5543
+            },
+            {
+              "downsample": 32.0,
+              "width": 3768,
+              "height": 2771
+            },
+            {
+              "downsample": 117.77848501826028,
+              "width": 1024,
+              "height": 753
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 1,
+      "randomizedName": "968ad31c-150f-4ac3-b0a9-e1e3dbe58cd4",
+      "imageName": "HPan-Ade170Sur-01-115-002.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/HPan-Ade170Sur-01-151.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HPan-Ade170Sur-01-151.svs",
+          "width": 63743,
+          "height": 45123,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 63743,
+              "height": 45123
+            },
+            {
+              "downsample": 4.0,
+              "width": 15935,
+              "height": 11280
+            },
+            {
+              "downsample": 16.0,
+              "width": 3983,
+              "height": 2820
+            },
+            {
+              "downsample": 62.28680453642956,
+              "width": 1024,
+              "height": 724
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4939,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4939,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 2,
+      "randomizedName": "c9f92498-a363-46b1-9220-af118b78bea7",
+      "imageName": "HPan-Ade170Sur-01-151.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/HPan-Ade180Sur-1-003.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HPan-Ade180Sur-1-003.svs",
+          "width": 136800,
+          "height": 83767,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 136800,
+              "height": 83767
+            },
+            {
+              "downsample": 4.0,
+              "width": 34200,
+              "height": 20941
+            },
+            {
+              "downsample": 16.0,
+              "width": 8550,
+              "height": 5235
+            },
+            {
+              "downsample": 64.0,
+              "width": 2137,
+              "height": 1308
+            },
+            {
+              "downsample": 133.59671551036683,
+              "width": 1024,
+              "height": 627
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 4,
+      "randomizedName": "d71f837c-c28a-42b4-806a-2d4b45d36078",
+      "imageName": "HPan-Ade180Sur-1-003.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA485-SH106.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA485-SH106.svs",
+          "width": 41314,
+          "height": 26633,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 41314,
+              "height": 26633
+            },
+            {
+              "downsample": 4.0,
+              "width": 10328,
+              "height": 6658
+            },
+            {
+              "downsample": 16.0,
+              "width": 2582,
+              "height": 1664
+            },
+            {
+              "downsample": 40.34936671401515,
+              "width": 1024,
+              "height": 660
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5455,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5455,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 10.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 5,
+      "randomizedName": "66ba3d9a-3f86-4372-bb99-5b734ef3951e",
+      "imageName": "PA485-SH106.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA802-184.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA802-184.svs",
+          "width": 59399,
+          "height": 41960,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 59399,
+              "height": 41960
+            },
+            {
+              "downsample": 4.0,
+              "width": 14849,
+              "height": 10490
+            },
+            {
+              "downsample": 16.0,
+              "width": 3712,
+              "height": 2622
+            },
+            {
+              "downsample": 58.0,
+              "width": 1024,
+              "height": 723
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5038,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5038,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 6,
+      "randomizedName": "077ca81e-978f-4706-8acd-3b8b1f61675d",
+      "imageName": "PA802-184.svs no metadata",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA961e%20I099%20BIOMAX.US-006.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA961e I099 BIOMAX.US-006.svs",
+          "width": 122400,
+          "height": 80113,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 122400,
+              "height": 80113
+            },
+            {
+              "downsample": 4.0,
+              "width": 30600,
+              "height": 20028
+            },
+            {
+              "downsample": 16.0,
+              "width": 7650,
+              "height": 5007
+            },
+            {
+              "downsample": 32.0,
+              "width": 3825,
+              "height": 2503
+            },
+            {
+              "downsample": 119.55144589552239,
+              "width": 1024,
+              "height": 670
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 7,
+      "randomizedName": "eeec5fbd-9b13-4f14-a37b-d318f78bfe25",
+      "imageName": "PA961e I099 BIOMAX.US-006.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA1002a%20H136%20BIOMAX.US.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA1002a H136 BIOMAX.US.svs",
+          "width": 90000,
+          "height": 63435,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 90000,
+              "height": 63435
+            },
+            {
+              "downsample": 4.0,
+              "width": 22500,
+              "height": 15858
+            },
+            {
+              "downsample": 16.0,
+              "width": 5625,
+              "height": 3964
+            },
+            {
+              "downsample": 32.0,
+              "width": 2812,
+              "height": 1982
+            },
+            {
+              "downsample": 87.9453125,
+              "width": 1024,
+              "height": 721
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 8,
+      "randomizedName": "5f37fb38-4cce-4c6f-a4ed-64438a3372c3",
+      "imageName": "PA1002a H136 BIOMAX.US.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA2072.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA2072.svs",
+          "width": 49896,
+          "height": 41872,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 49896,
+              "height": 41872
+            },
+            {
+              "downsample": 4.0,
+              "width": 12474,
+              "height": 10468
+            },
+            {
+              "downsample": 16.0,
+              "width": 3118,
+              "height": 2617
+            },
+            {
+              "downsample": 54.52599043715847,
+              "width": 915,
+              "height": 768
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5043,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5043,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 10,
+      "randomizedName": "06f7d001-dbbd-4606-b6d9-b7980f4d66fa",
+      "imageName": "PA2072.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/PA2081b%20F075.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "PA2081b F075.svs",
+          "width": 52199,
+          "height": 41562,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 52199,
+              "height": 41562
+            },
+            {
+              "downsample": 4.0,
+              "width": 13049,
+              "height": 10390
+            },
+            {
+              "downsample": 16.0,
+              "width": 3262,
+              "height": 2597
+            },
+            {
+              "downsample": 54.13276387448133,
+              "width": 964,
+              "height": 768
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5038,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5038,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 11,
+      "randomizedName": "f4e10a68-32ee-4e0d-8d9e-20c4eeca0f57",
+      "imageName": "PA2081b F075.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/BBS14011(chronic%20pancreatitis)-not%20annotated.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "BBS14011(chronic pancreatitis)-not annotated.svs",
+          "width": 43036,
+          "height": 29459,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 43036,
+              "height": 29459
+            },
+            {
+              "downsample": 4.0,
+              "width": 10759,
+              "height": 7364
+            },
+            {
+              "downsample": 16.0,
+              "width": 2689,
+              "height": 1841
+            },
+            {
+              "downsample": 42.042142857142856,
+              "width": 1024,
+              "height": 700
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5043,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5043,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 13,
+      "randomizedName": "446a6897-eb8a-4ab8-9275-f9034b8311eb",
+      "imageName": "BBS14011(chronic pancreatitis)-not annotated.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/BIC14011b-092.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "BIC14011b-092.svs",
+          "width": 41185,
+          "height": 27460,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 41185,
+              "height": 27460
+            },
+            {
+              "downsample": 4.0,
+              "width": 10296,
+              "height": 6865
+            },
+            {
+              "downsample": 16.0,
+              "width": 2574,
+              "height": 1716
+            },
+            {
+              "downsample": 40.241828090634165,
+              "width": 1024,
+              "height": 682
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.5455,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.5455,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 10.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 14,
+      "randomizedName": "de2b595e-0c81-4060-a52a-7054504ccdb0",
+      "imageName": "BIC14011b-092.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/HPanA150CS03-not%20annotated.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HPanA150CS03-not annotated.svs",
+          "width": 64298,
+          "height": 41838,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 64298,
+              "height": 41838
+            },
+            {
+              "downsample": 4.0,
+              "width": 16074,
+              "height": 10459
+            },
+            {
+              "downsample": 16.0,
+              "width": 4018,
+              "height": 2614
+            },
+            {
+              "downsample": 62.80541772240991,
+              "width": 1024,
+              "height": 666
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.4939,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.4939,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 15,
+      "randomizedName": "9b55d7d0-e34a-4898-9ae3-1de3f987f82a",
+      "imageName": "HPanA150CS03-not annotated.svs",
+      "metadata": {}
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:///Users/grandevelia1/Documents/school/fall_2022/771_cv/project/data/CS771_project/Images/HPan-Ade170Sur-01-101-001.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HPan-Ade170Sur-01-101-001.svs",
+          "width": 126000,
+          "height": 90756,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 126000,
+              "height": 90756
+            },
+            {
+              "downsample": 4.0,
+              "width": 31500,
+              "height": 22689
+            },
+            {
+              "downsample": 16.0,
+              "width": 7875,
+              "height": 5672
+            },
+            {
+              "downsample": 32.0,
+              "width": 3937,
+              "height": 2836
+            },
+            {
+              "downsample": 123.0,
+              "width": 1024,
+              "height": 737
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.2527,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 240,
+          "preferredTileHeight": 240
+        }
+      },
+      "entryID": 16,
+      "randomizedName": "c000a909-d38f-461a-9882-d1b369f63e94",
+      "imageName": "HPan-Ade170Sur-01-101-001.svs",
+      "metadata": {}
+    }
+  ]
+}

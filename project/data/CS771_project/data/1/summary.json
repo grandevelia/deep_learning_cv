@@ -1,0 +1,1 @@
+{"timestamp":1664392964000,"imageType":"BRIGHTFIELD_H_E","server":{"width":120600,"height":88691,"sizeC":3,"sizeZ":1,"sizeT":1},"hierarchy":{"nObjects":379,"objectTypeCounts":{"Root objects":1,"Annotations":202,"TMA cores":176},"annotationClassificationCounts":{"Tissue":7,"Region*":183,"Artifact*":12},"detectionClassificationCounts":{}}}
