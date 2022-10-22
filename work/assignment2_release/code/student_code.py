@@ -11,7 +11,7 @@ import math
 from utils import resize_image
 import custom_transforms as transforms
 from custom_blocks import PatchEmbed, TransformerBlock, trunc_normal_
-from work.assignment2_release.code.custom_blocks import Mlp
+from custom_blocks import Mlp
 
 
 #################################################################################
@@ -317,14 +317,14 @@ class SimpleViT(nn.Module):
         # followed by some transformer blocks
         transformer_blocks = [
             TransformerBlock(
-                in_chans, 
-                num_heads, 
-                mlp_ratio, 
-                qkv_bias, 
-                drop_path_rate, 
-                norm_layer, 
-                act_layer, 
-                window_size
+                dim=in_chans, 
+                num_heads=num_heads, 
+                mlp_ratio=mlp_ratio, 
+                qkv_bias=qkv_bias, 
+                drop_path=drop_path_rate, 
+                norm_layer=norm_layer, 
+                act_layer=act_layer, 
+                window_size=window_size
             )
             for _ in range(depth)
         ]
