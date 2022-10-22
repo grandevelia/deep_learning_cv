@@ -1,3 +1,4 @@
+from unittest.mock import patch
 import numpy as np
 import torch
 import torch.nn as nn
@@ -10,6 +11,7 @@ import math
 from utils import resize_image
 import custom_transforms as transforms
 from custom_blocks import PatchEmbed, TransformerBlock, trunc_normal_
+from work.assignment2_release.code.custom_blocks import Mlp
 
 
 #################################################################################
@@ -268,7 +270,7 @@ class SimpleViT(nn.Module):
         act_layer=nn.GELU,
         use_abs_pos=True,
         window_size=4,
-        window_block_indexes=(1, 3),
+        window_block_indexes=(1, 3), #TODO figure out what this is for
     ):
         """
         Args:
@@ -305,6 +307,7 @@ class SimpleViT(nn.Module):
             self.pos_embed = None
 
         # stochastic depth decay rule
+        #TODO figure out what this is for
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]
 
         ########################################################################
@@ -312,6 +315,35 @@ class SimpleViT(nn.Module):
         ########################################################################
         # the implementation shall start from embedding patches,
         # followed by some transformer blocks
+        transformer_blocks = [
+            TransformerBlock(
+                in_chans, 
+                num_heads, 
+                mlp_ratio, 
+                qkv_bias, 
+                drop_path_rate, 
+                norm_layer, 
+                act_layer, 
+                window_size
+            )
+            for _ in range(depth)
+        ]
+        self.features = nn.Sequential(
+            PatchEmbed(
+                (patch_size, patch_size), 
+                (patch_size, patch_size),
+                padding=(0, 0), #TODO Figure out what it should be
+                in_chans=in_chans,
+                embed_dim=embed_dim
+            ),
+            *transformer_blocks,
+            #LayerNorm ? TODO
+            Mlp(
+                in_features=in_chans,
+                output_features=num_classes,
+                act_layer=act_layer
+            )
+        )
 
         if self.pos_embed is not None:
             trunc_normal_(self.pos_embed, std=0.02)
@@ -332,6 +364,8 @@ class SimpleViT(nn.Module):
         ########################################################################
         # Fill in the code here
         ########################################################################
+        for layer in self.features:
+            x = layer(x)
         return x
 
 
