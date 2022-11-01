@@ -549,7 +549,7 @@ class PGDAttack(object):
             output = torch.min(torch.max(input - self.epsilon, output_nograd), input + self.epsilon)
             model.zero_grad()
         input.requires_grad = True
-        return input #output
+        return output
 
 
 default_attack = PGDAttack
