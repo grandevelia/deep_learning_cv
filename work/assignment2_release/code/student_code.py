@@ -547,7 +547,7 @@ class PGDAttack(object):
                 output_nograd -= delta_gradient
             
             output = torch.min(torch.max(input - self.epsilon, output_nograd), input + self.epsilon)
-        model.zero_grad()
+            model.zero_grad()
         input.requires_grad = True
         return input #output
 
