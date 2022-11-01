@@ -91,7 +91,7 @@ class CustomConv2DFunction(Function):
         Outputs:
           grad_input: gradients of the input features
           grad_weight: gradients of the convolution weight
-          grad_bias: gradients of the bias term
+          grad_bias: gradients of the bias term 
 
         """
         # unpack tensors and initialize the grads
@@ -190,9 +190,6 @@ class CustomConv2d(Module):
         return s.format(**self.__dict__)
 
 
-#################################################################################
-# Part II: Design and train a network
-#################################################################################
 class SimpleNet(nn.Module):
     # a simple CNN for image classifcation
     def __init__(self, conv_op=nn.Conv2d, num_classes=100):
@@ -220,6 +217,100 @@ class SimpleNet(nn.Module):
             nn.ReLU(inplace=True),
             conv_op(128, 512, kernel_size=1, stride=1, padding=0),
             nn.ReLU(inplace=True),
+        )
+        # global avg pooling + FC
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.fc = nn.Linear(512, num_classes)
+        self.attack = default_attack(loss_fn=None, num_steps=3)
+
+    def reset_parameters(self):
+        # init all params
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
+                if m.bias is not None:
+                    nn.init.consintat_(m.bias, 0.0)
+            elif isinstance(m, nn.BatchNorm2d):
+                nn.init.constant_(m.weight, 1.0)
+                nn.init.constant_(m.bias, 0.0)
+
+    def forward(self, x):
+        # you can implement adversarial training here
+        if self.training:
+            self.eval()
+            randoms = np.random.randint(x.shape[0], size=x.shape[0]//2)
+            perts = x[randoms, :, :, :]
+            with torch.set_grad_enabled(True):
+                adv_x = self.attack.perturb(self, perts)
+            x[randoms] = adv_x#torch.concat((x, adv_x))
+            x.requires_grad = True
+            self.train()
+        x = self.features(x)
+        x = self.avgpool(x)
+        x = x.view(x.size(0), -1)
+        x = self.fc(x)
+        return x
+
+
+class BottleneckBlock(nn.Module):
+    def __init__(self, conv_op, in_chans, intmd_chans, out_chans):
+        super().__init__()
+        self.conv1 = conv_op(in_chans, intmd_chans, kernel_size=1, stride=1, padding=0)
+        self.norm1 = nn.BatchNorm2d(intmd_chans)
+        self.conv2 = conv_op(intmd_chans, intmd_chans, kernel_size=3, stride=1, padding=1)
+        self.norm2 = nn.BatchNorm2d(intmd_chans)
+        self.conv3 = conv_op(intmd_chans, out_chans, kernel_size=1, stride=1, padding=0)
+        self.norm3 = nn.BatchNorm2d(out_chans)
+        self.relu = nn.ReLU(inplace=True)
+        self.input_expander = conv_op(in_chans, out_chans, kernel_size=1, stride=1)
+        
+
+    def forward(self, x):
+        orig_x = x.clone()
+        x = self.conv1(x)
+        x = self.norm1(x)
+        x = self.relu(x)
+
+        x = self.conv2(x)
+        x = self.norm2(x)
+        x = self.relu(x)
+
+        x = self.conv3(x)
+        x = self.norm3(x)
+        orig_x = self.input_expander(orig_x)
+        x = x + orig_x
+        x = self.relu(x)
+        return x
+
+#################################################################################
+# Part II: Design and train a network
+#################################################################################
+class MyNet(nn.Module):
+    # a simple CNN for image classifcation
+    def __init__(self, conv_op=nn.Conv2d, num_classes=100):
+        super(MyNet, self).__init__()
+        # you can start from here and create a better model
+        self.features = nn.Sequential(
+            # conv1 block: conv 7x7
+            conv_op(3, 64, kernel_size=7, stride=2, padding=3),
+            nn.ReLU(inplace=True),
+            # max pooling 1/2
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+            # conv2 block: simple bottleneck
+            BottleneckBlock(conv_op, 64, 64, 128),
+            BottleneckBlock(conv_op, 128, 128, 128),
+            BottleneckBlock(conv_op, 128, 128, 128),
+
+            #TOOD Another max pool here ?
+            # conv3 block: simple bottleneck
+            BottleneckBlock(conv_op, 128, 256, 256),
+            BottleneckBlock(conv_op, 256, 256, 256),
+            BottleneckBlock(conv_op, 256, 256, 256),
+            
+            # max pooling 1/2
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+            # conv4 block: simple bottleneck
+            BottleneckBlock(conv_op, 256, 128, 512),
         )
         # global avg pooling + FC
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
@@ -270,7 +361,7 @@ class SimpleViT(nn.Module):
         act_layer=nn.GELU,
         use_abs_pos=True,
         window_size=4,
-        window_block_indexes=(1, 3), #TODO figure out what this is for
+        window_block_indexes=(1, 3),
     ):
         """
         Args:
@@ -294,7 +385,6 @@ class SimpleViT(nn.Module):
         Feel free to modify the default parameters here.
         """
         super(SimpleViT, self).__init__()
-
         if use_abs_pos:
             # Initialize absolute positional embedding with image size
             # The embedding is learned from data
@@ -307,7 +397,6 @@ class SimpleViT(nn.Module):
             self.pos_embed = None
 
         # stochastic depth decay rule
-        #TODO figure out what this is for
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]
 
         ########################################################################
@@ -315,36 +404,33 @@ class SimpleViT(nn.Module):
         ########################################################################
         # the implementation shall start from embedding patches,
         # followed by some transformer blocks
+        self.patch_emb = PatchEmbed(
+            (patch_size, patch_size), 
+            (patch_size, patch_size),
+            padding=(0, 0),
+            in_chans=in_chans,
+            embed_dim=embed_dim
+        )
         transformer_blocks = [
             TransformerBlock(
-                dim=in_chans, 
+                dim=embed_dim, 
                 num_heads=num_heads, 
                 mlp_ratio=mlp_ratio, 
                 qkv_bias=qkv_bias, 
-                drop_path=drop_path_rate, 
+                drop_path=dpr[i],
                 norm_layer=norm_layer, 
                 act_layer=act_layer, 
-                window_size=window_size
+                window_size=window_size if i in window_block_indexes else 0
             )
-            for _ in range(depth)
+            for i, _ in enumerate(range(depth))
         ]
-        self.features = nn.Sequential(
-            PatchEmbed(
-                (patch_size, patch_size), 
-                (patch_size, patch_size),
-                padding=(0, 0), #TODO Figure out what it should be
-                in_chans=in_chans,
-                embed_dim=embed_dim
-            ),
-            *transformer_blocks,
-            #LayerNorm ? TODO
-            Mlp(
-                in_features=in_chans,
-                output_features=num_classes,
-                act_layer=act_layer
-            )
+        self.transformer_blocks = nn.Sequential(
+            *transformer_blocks
         )
-
+        self.head = nn.Sequential(
+            nn.LayerNorm(embed_dim),
+            nn.Linear(embed_dim, num_classes)
+        )
         if self.pos_embed is not None:
             trunc_normal_(self.pos_embed, std=0.02)
 
@@ -364,8 +450,16 @@ class SimpleViT(nn.Module):
         ########################################################################
         # Fill in the code here
         ########################################################################
-        for layer in self.features:
+        x = self.patch_emb(x)
+        if self.pos_embed is not None:
+            x = x + self.pos_embed
+
+        for layer in self.transformer_blocks:
             x = layer(x)
+
+        x = x.view(x.shape[0], x.shape[1] * x.shape[2], x.shape[3])
+        x = x.mean(dim = 1) #Average pool
+        x = self.head(x)
         return x
 
 
@@ -437,13 +531,22 @@ class PGDAttack(object):
         # clone the input tensor and disable the gradients
         output = input.clone()
         input.requires_grad = False
-
         # loop over the number of steps
         # for _ in range(self.num_steps):
         #################################################################################
         # Fill in the code here
         #################################################################################
-
+        for _ in range(self.num_steps):
+            output_nograd = output.clone()
+            output_nograd.requires_grad = True
+            preds = model(output_nograd)
+            min_preds, min_inds = torch.min(preds, 1)
+            min_preds.backward(torch.ones_like(min_preds))
+            with torch.no_grad():
+                delta_gradient = self.step_size * output_nograd.grad.sign()
+                output = output - delta_gradient
+            
+            output = torch.min(torch.max(input - self.epsilon, output), input + self.epsilon)
         return output
 
 
@@ -479,12 +582,15 @@ class GradAttention(object):
         input.requires_grad = True
         if input.grad is not None:
             input.grad.zero_()
-
+        
         #################################################################################
         # Fill in the code here
         #################################################################################
-
-        return output
+        preds = model(input)
+        max_preds, inds = torch.max(preds, 1)
+        max_preds.backward(torch.ones_like(max_preds))
+        output, chan_inds = torch.max(torch.abs(input.grad), 1)
+        return output.unsqueeze(1)
 
 
 default_attention = GradAttention
