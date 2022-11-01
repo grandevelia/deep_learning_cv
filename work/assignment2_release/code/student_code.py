@@ -243,7 +243,6 @@ class SimpleNet(nn.Module):
             with torch.set_grad_enabled(True):
                 adv_x = self.attack.perturb(self, perts)
             x[randoms] = adv_x#torch.concat((x, adv_x))
-            x.requires_grad = True
             self.train()
         x = self.features(x)
         x = self.avgpool(x)
@@ -536,18 +535,21 @@ class PGDAttack(object):
         #################################################################################
         # Fill in the code here
         #################################################################################
+        output = output.detach()
         for _ in range(self.num_steps):
-            output_nograd = output.clone()
+            output_nograd = output.clone().detach()
             output_nograd.requires_grad = True
             preds = model(output_nograd)
             min_preds, min_inds = torch.min(preds, 1)
             min_preds.backward(torch.ones_like(min_preds))
             with torch.no_grad():
                 delta_gradient = self.step_size * output_nograd.grad.sign()
-                output = output - delta_gradient
+                output_nograd -= delta_gradient
             
-            output = torch.min(torch.max(input - self.epsilon, output), input + self.epsilon)
-        return output
+            output = torch.min(torch.max(input - self.epsilon, output_nograd), input + self.epsilon)
+        model.zero_grad()
+        input.requires_grad = True
+        return input #output
 
 
 default_attack = PGDAttack
