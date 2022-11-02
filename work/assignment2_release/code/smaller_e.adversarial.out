@@ -1,0 +1,15 @@
+Use GPU: 0
+=> loading checkpoint '../models/p2.1/model_best.pth.tar'
+=> loaded checkpoint '../models/p2.1/model_best.pth.tar' (epoch 60, acc1 44.12)
+Generating adversarial samples for the model ..
+Test: [0/100]	Time 3.738 (3.738)	Acc@1 23.00 (23.00)	Acc@5 55.00 (55.00)
+Test: [10/100]	Time 1.036 (1.524)	Acc@1 20.00 (24.09)	Acc@5 44.00 (49.82)
+Test: [20/100]	Time 1.056 (1.398)	Acc@1 22.00 (23.00)	Acc@5 49.00 (48.52)
+Test: [30/100]	Time 1.074 (1.342)	Acc@1 26.00 (22.68)	Acc@5 54.00 (48.97)
+Test: [40/100]	Time 1.088 (1.326)	Acc@1 19.00 (22.66)	Acc@5 41.00 (49.29)
+Test: [50/100]	Time 1.102 (1.321)	Acc@1 24.00 (22.86)	Acc@5 51.00 (49.22)
+Test: [60/100]	Time 1.120 (1.320)	Acc@1 14.00 (22.57)	Acc@5 42.00 (48.89)
+Test: [70/100]	Time 1.132 (1.322)	Acc@1 20.00 (22.24)	Acc@5 43.00 (48.65)
+Test: [80/100]	Time 1.128 (1.317)	Acc@1 23.00 (22.40)	Acc@5 40.00 (48.65)
+Test: [90/100]	Time 1.121 (1.318)	Acc@1 23.00 (22.30)	Acc@5 57.00 (48.70)
+******Acc@1 22.270 Acc@5 48.530
